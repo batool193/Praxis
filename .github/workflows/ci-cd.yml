@@ -203,7 +203,7 @@ jobs:
           helm dependency update 
           helm upgrade --install praxis-batool . \
             --create -namespace -n batool \
-            --set backend.image="ghcr.io/${{ env.REPO_LC }}/backend" \
-            --set frontend.image="ghcr.io/${{ env.REPO_LC }}/frontend" \
-            --set backend.image.tag="${{ github.sha }}"\
-            --set frontend.image.tag="${{ github.sha }}"
+            --set backend.repository.image="ghcr.io/${{ env.REPO_LC }}/backend" \
+            --set frontend.repository.image="ghcr.io/${{ env.REPO_LC }}/frontend" \
+            --set backend.repository.tag="${{ github.sha }}"\
+            --set frontend.repository.tag="${{ github.sha }}"

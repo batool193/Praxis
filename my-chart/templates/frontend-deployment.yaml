@@ -19,7 +19,7 @@ spec:
         - name: regcred
       containers:
         - name: frontend-container
-          image: "{{ .Values.frontend.image }}:{{ .Values.frontend.image.tag }}"
+          image: "{{ .Values.frontend.repository.image }}:{{ .Values.frontend.repository.tag }}"
           ports:
            - containerPort: 80
           env:

@@ -19,7 +19,7 @@ spec:
         - name: {{ .Values.backend.imagePullSecret }}
       containers:
         - name: backend-container
-          image: "{{ .Values.backend.image }}:{{ .Values.backend.image.tag }}"
+          image: "{{ .Values.backend.repository.image }}:{{ .Values.backend.repository.tag }}"
           ports:
            - containerPort: 8080
           env:
