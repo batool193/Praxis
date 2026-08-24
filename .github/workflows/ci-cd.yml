@@ -202,10 +202,11 @@ jobs:
       - name: deploy with helm
         working-directory: ./my-chart
         run: |
-          helm dependency update 
+          helm dependency update
           helm upgrade --install praxis-batool . \
-            --create -namespace -n batool \
+            --create-namespace \
+            -n batool \
             --set backend.repository.image="ghcr.io/${{ env.REPO_LC }}/backend" \
             --set frontend.repository.image="ghcr.io/${{ env.REPO_LC }}/frontend" \
-            --set backend.repository.tag="${{ github.sha }}"\
+            --set backend.repository.tag="${{ github.sha }}" \
             --set frontend.repository.tag="${{ github.sha }}"
