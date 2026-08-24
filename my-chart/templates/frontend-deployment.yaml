@@ -19,7 +19,7 @@ spec:
         - name: regcred
       containers:
         - name: frontend-container
-          image: ghcr.io/batool193/frontend:v1
+          image: "{{ .Values.frontend.image }}:{{ .Values.frontend.image.tag }}"
           ports:
            - containerPort: 80
           env:

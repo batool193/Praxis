@@ -1,8 +1,11 @@
 backend:
   replicas: 3
   imagePullSecret: regcred
-  image: "ghcr.io/batool193/backend:v1"
-
+  image: ghcr.io/batool193/backend
+    tag: "v1"
+frontend:
+  image: ghcr.io/batool193/frontend
+    tag: "v1"
 grafana:
   enabled: true
   ingress:
