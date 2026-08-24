@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: batool
+  labels:
+    app: backend 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      imagePullSecrets:
+        - name: regcred
+      containers:
+        - name: backend-container
+          image: ghcr.io/batool193/backend:v1
+          ports:
+           - containerPort: 8080
+          env:
+            - name: MONGODB_URI
+              value: mongodb://praxis-form-mongodb.praxis.svc.cluster.local:27017/batoolpraxis
+            - name: ADMIN_DEFAULT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: ADMIN_DEFAULT_PASSWORD
+            - name: JWT_EXP_MINUTES
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: JWT_EXP_MINUTES
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: backend-secret
+                  key: JWT_SECRET
+
+
+
+         
