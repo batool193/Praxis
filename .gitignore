@@ -70,5 +70,8 @@ tmp/
 *.swo
 config.toml
 AGENTS.md
-./my-chart/charts
-./my-chart/Chart.lock
+############################
+# ===== Helm
+############################
+my-chart/charts/
+my-chart/Chart.lock
