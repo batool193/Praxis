@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: batool-praxis-argocd
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/batool193/Praxis.git
+    targetRevision: master
+    path: my-chart
+    helm:
+      releaseName: batool-praxis
+      valueFiles: 
+        - values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: batool
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
